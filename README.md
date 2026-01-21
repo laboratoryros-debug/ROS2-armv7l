@@ -45,3 +45,9 @@ echo "nameserver 1.1.1.1" >> /etc/resolv.conf
 apt update
 
 ```
+
+#Caso queira istalação automática pode usar
+
+```
+wget https://raw.githubusercontent.com/laboratoryros-debug/ROS2-armv7l/main/install-ubuntu.sh && chmod +x install-ubuntu.sh && ./install-ubuntu.sh
+```
