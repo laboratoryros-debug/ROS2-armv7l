@@ -46,8 +46,8 @@ apt update
 
 ```
 
-# Caso queira istalação automática do ubuntu pode usar
+# Caso queira istalação automática do ubuntu no diretório padrão pode usar
 
 ```
-git clone https://github.com/SEU_USUARIO/ROS2-armv7l.git && chmod +x ROS2-armv7l/install-ubuntu.sh && ./ROS2-armv7l/install-ubuntu.sh
+cd ~ && git clone https://github.com/SEU_USUARIO/ROS2-armv7l.git && chmod +x ROS2-armv7l/install-ubuntu.sh && ./ROS2-armv7l/install-ubuntu.sh
 ```
