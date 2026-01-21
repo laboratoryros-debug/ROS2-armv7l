@@ -46,8 +46,8 @@ apt update
 
 ```
 
-# Caso queira istalação automática pode usar
+# Caso queira istalação automática do ubuntu pode usar
 
 ```
-wget https://raw.githubusercontent.com/laboratoryros-debug/ROS2-armv7l/main/install-ubuntu.sh && chmod +x install-ubuntu.sh && ./install-ubuntu.sh
+git clone https://github.com/SEU_USUARIO/ROS2-armv7l.git && chmod +x ROS2-armv7l/install-ubuntu.sh && ./ROS2-armv7l/install-ubuntu.sh
 ```

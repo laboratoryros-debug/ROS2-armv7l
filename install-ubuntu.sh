@@ -53,31 +53,24 @@ else
     echo "[5/7] Rootfs já extraído, pulando..."
 fi
 
-# Criar script de inicialização
-echo "[6/7] Criando script de inicialização..."
-cat > start-ubuntu.sh << 'EOF'
+# Copiar start-ubuntu.sh do repositório se existir, senão criar
+echo "[6/7] Configurando script de inicialização..."
+if [ -f "../ROS2-armv7l/start-ubuntu.sh" ]; then
+    echo "Copiando start-ubuntu.sh do repositório..."
+    cp ../ROS2-armv7l/start-ubuntu.sh ./start-ubuntu.sh
+    chmod +x start-ubuntu.sh
+else
+    echo "start-ubuntu.sh não encontrado no repo, criando padrão..."
+    cat > start-ubuntu.sh << 'EOF'
 #!/data/data/com.termux/files/usr/bin/bash
 unset LD_PRELOAD
 
 UBUNTU_PATH="$HOME/ubuntu"
 
-# Configurar DNS antes de entrar
-echo "nameserver 8.8.8.8" > $UBUNTU_PATH/etc/resolv.conf
-echo "nameserver 8.8.4.4" >> $UBUNTU_PATH/etc/resolv.conf
-echo "nameserver 1.1.1.1" >> $UBUNTU_PATH/etc/resolv.conf
-
-proot \
---link2symlink \
--0 \
--r $UBUNTU_PATH \
--b /dev \
--b /proc \
--b /sys \
--w /root \
-/bin/bash -c "export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin; exec /bin/bash --login" 2>&1 | grep -v "groups:"
+proot --link2symlink -0 -r ~/ubuntu -b /dev -b /proc -b /sys -w /root /bin/bash -c "export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin; exec /bin/bash --login"
 EOF
-
-chmod +x start-ubuntu.sh
+    chmod +x start-ubuntu.sh
+fi
 
 # Criar script de configuração inicial do Ubuntu
 echo "[7/7] Criando script de configuração inicial..."
@@ -129,6 +122,6 @@ echo "  source ~/.bashrc"
 echo "  ubuntu"
 echo ""
 echo "Após entrar no Ubuntu pela primeira vez, execute:"
-echo "  cd / && ./root/../setup-ubuntu.sh"
+echo "  bash /setup-ubuntu.sh"
 echo ""
 echo "========================================="
