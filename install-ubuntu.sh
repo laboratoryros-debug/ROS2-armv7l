@@ -83,6 +83,7 @@ echo "Configurando Ubuntu..."
 
 # Configurar PATH permanentemente
 echo 'export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' >> /root/.bashrc
+echo 'export DEBIAN_FRONTEND=noninteractive' >> /root/.bashrc
 
 # Adicionar grupos para evitar warnings
 echo "aid_net_bt_admin:x:3003:" >> /etc/group
