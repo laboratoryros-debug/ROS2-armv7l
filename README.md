@@ -49,5 +49,5 @@ apt update
 # Caso queira istalação automática do ubuntu no diretório padrão pode usar
 
 ```
-cd ~ && curl -O https://raw.githubusercontent.com/LAB-ROS/ROS2-armv7l/main/install-ubuntu.sh && ./ROS2-armv7l/install-ubuntu.sh
+cd ~ && curl -O https://raw.githubusercontent.com/LAB-ROS/ROS2-armv7l/main/install-ubuntu.sh && chmod +x install-ubuntu.sh && ./install-ubuntu.sh
 ```
